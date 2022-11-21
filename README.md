@@ -13,7 +13,15 @@ The main origin of data is the National Weather Surveillance Radar Networkis = "
 
 The other origin is the evaluatiion of scientist whether the data is contaminated or not. This information is stored in excel spreadsheets.
 
-****Size of raw data:****
+****Spreadsheets****
+
+The spreadsheets contain information that are not in the NEXRAD files. For example when sunset happened, and based on that we will pull data from the AWS site.
+
+Moreover, the spreadsheet contains the following columns:
+RADAR,	DATE,	SEASON,	DOWNLOAD,	STATUS,	CONTAMINATION_TYPE,	TARGET_ID,	SCREENER,	SURFACE_WIND,	WIND_DIRECTION,	APPROXIMATE_SAMPLING_TIME,	TARGET_SPEED,	GROUND_HEADING,	COMMENTS -- We are interested in status, the date to evaluate the day based on status.
+
+
+****NEXRAD -- Size of raw data:****
 
 Images are pulled from the NEXRAD Level II files, so all image sizes are standarized.
     
@@ -44,7 +52,14 @@ The largest limitation currently is the massive amount of datapoints we are deal
 
 We are still considering multiple ways to reduce the data size. One of the most promising ideas we have is we would do a sampling of the images and set an integer based on the sample. For example: we would look for high values of roundness and if that reaches a certain treshold in the data, we would assume it contains participation and set a certain value for the image. Add the images values together from the different timestamped images from the same day and feed that single integer to the Neural Network. That single integer may be standardized. This model could nicely work out if the anomalies are distinct and we find the right thresolds.
 
-*Jupyter Notebook data download and environment setup requirements: !wget !unzip like functions as well as !pip install functions for non standard libraries not available in colab are required to be in the top section of your jupyter lab notebook. Please see HW2 & HW3 for examples.*
+
+**RETRIEVING DATA**
+
+Spreadsheets uploaded to drive:
+https://drive.google.com/drive/folders/1-SCc3EW-wtdELNm4zVe5lT-u6V2DQJFJ?usp=share_link
+
+How to retrive the NEXRAD files are described in this R-script:
+https://drive.google.com/file/d/12LogSdZTVbxkuO8XF6-a_3MeGVH-_wmg/view?usp=share_link _(Colab doesn't support file storing for multiple runs, therefore it is best to have them donwloaded and stored on computer/cloud.)_
 
 **GOOGLE COLAB**
 
