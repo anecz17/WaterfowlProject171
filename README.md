@@ -74,6 +74,8 @@ The largest limitation currently is the massive amount of datapoints we are deal
 
 We are still considering multiple ways to reduce the data size. One of the most promising ideas we have is we would do a sampling of the images and set an integer based on the sample. For example: we would look for high values of roundness and if that reaches a certain treshold in the data, we would assume it contains participation and set a certain value for the image. Add the images values together from the different timestamped images from the same day and feed that single integer to the Neural Network. That single integer may be standardized. This model could nicely work out if the anomalies are distinct and we find the right thresolds.
 
+__Using pycaret to decide which model works best__
+
 
 **RETRIEVING DATA**
 
