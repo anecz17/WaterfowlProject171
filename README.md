@@ -8,8 +8,12 @@ Create a machine learning model that takes a day of NEXRAD readings and correctl
 *Perform the data exploration step (i.e. evaluate your data, # of observations, details about your data distributions, scales, missing data, column descriptions) Note: For image data you can still describe your data by the number of classes, # of images, size of images, are sizes standardized? do they need to be cropped? normalized? etc.*
 
 Number of images:
+There are 20 radar stations, each has at least 150 screened days and each day contains 20 files. These files could be seen as images, but they only contain float values connected to the pixels of the image in a 2D array.
 
 Size of images:
+The size of an image is generally 720x1192.
+
+Putting size and the numbers together, we get that the total dataset we work with contains 514 Billion data points.
 
 Are sizes standardized: Yes! We are working with NEXRAD Level II data.
 
@@ -17,9 +21,9 @@ Are sizes standardized: Yes! We are working with NEXRAD Level II data.
 
 Classes plotted on COLAB: cross_correlation_ratio, spectrum_width, differential_phase, velocity, differential_reflectivity, reflectivity
 
-cross_correlation_ratio: 
+cross_correlation_ratio: This describes the roundness of an objects. Great tool to determine whether a data point is participation or not, since the greater this value, the more probable it is participation. (participation is usually small and droplets are round-like) 
 
-spectrum_width:
+spectrum_width: 
 
 differential_phase:
 
