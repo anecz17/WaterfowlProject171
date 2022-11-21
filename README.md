@@ -70,6 +70,10 @@ The files contain 72 column, each of them is a 2D array of floats. We can conver
 
 **ADDRESSING PREPROCESSING**
 
+1. Linear --> sucks --> neuro net? may not work
+2. polinomial and logistic? May take forever..
+3. Best bet: neuronet to figure it out by itself. 
+
 The largest limitation currently is the massive amount of datapoints we are dealing with per day. Each day has 20 images associated with (51K values even if we only use 3 columns) and only a single 'status' classification. We will have to not only crop the images, but likely find an additional method to reduce how many points are being processed. Data outside of 150 km radius of the radar cannot show birds, and if it is contaminated outside of 250km, the scientist didn't mark it as contaminated. Those parts of the images are cropped.
 
 We are still considering multiple ways to reduce the data size. One of the most promising ideas we have is we would do a sampling of the images and set an integer based on the sample. For example: we would look for high values of roundness and if that reaches a certain treshold in the data, we would assume it contains participation and set a certain value for the image. Add the images values together from the different timestamped images from the same day and feed that single integer to the Neural Network. That single integer may be standardized. This model could nicely work out if the anomalies are distinct and we find the right thresolds.
