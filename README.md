@@ -17,11 +17,17 @@ Are sizes standardized: Yes! We are working with NEXRAD Level II data.
 
 Classes plotted on COLAB: cross_correlation_ratio, spectrum_width, differential_phase, velocity, differential_reflectivity, reflectivity
 
-cross_correlation_ratio:
-spectrum_width, differential_phase:
+cross_correlation_ratio: 
+
+spectrum_width:
+
+differential_phase:
+
 velocity:
+
 differential_reflectivity:
-reflectivity
+
+reflectivity:
 
 **ADDRESSING PREPROCESSING**
 
