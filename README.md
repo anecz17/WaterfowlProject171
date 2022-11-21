@@ -7,34 +7,36 @@ Create a machine learning model that takes a day of NEXRAD readings and correctl
 
 **DATA EXPLORATION**
 
-Number of images:
-There are 20 radar stations, each has at least 150 screened days and each day contains 20 files. These files could be seen as images, but they only contain float values connected to the pixels of the image in a 2D array.
+****Size of raw data:****
 
-Size of images:
-The size of an image is 720x1192.
+Images are pulled from the NEXRAD Level II files, so all image sizes are standarized.
+    
+There are 20 radar stations, each has at least 150 screened days and each day contains 250 files. Approximately, the radar stations take a snapshot of the environment every 10 minutes. We generally work with 20 files a day, since we are only interested in the ~200 minute (~3.5 hour) window around sunset. This has biological background - the birds go out for their night feeds after sunset.
+    
+Every file has a total of 72 columns. Every column has 720x1192 data points - sizes are standardized. Columns could be interpeted as images and data points as pixels. But we are only interested in a couple in the order of 3-7. (Discussion is still going on with the biologists to understand which variables indicate bird movement and which variables indicate other origins.)
+    
+Therefore the total amount of data we work with: 20 x 150 x 20 x 3 x 720 x 1192 = ~150 Billion
 
-Putting size and the number of images together, we get that the total dataset we work with contains 51 Billion data points (20 * 150 * 720 * 1192).
+  As we can see the data size is huge. These values are not normalized, and their distribution is unknown. We will sort out the missing values. We have other excel files that contain y values, basically whether the day was contaminated by other movement or not. The data is not normalized, it has whatever value it captured, but if we would look at all the data in the columns we could generally set a range.
 
-Are sizes standardized: Yes. We are pulling image information from the NEXRAD Level II files, so all image sizes are standarized.
+The columns we planning to work with are correlation coeffitient, reflectivity and velocity. (More discussion is needed and we may add a couple more to better sort out special cases/anomalies.)
 
-**PLOTTING DATA**
+Correlation Coeffitient - cross_correlation_ratio - describes the roundness of an objects. Great tool to determine whether a data point is participation or not, since the greater this value, the more probable it is participation. (participation is small and droplets are round-shaped)
 
-Plotting images is something we're still working through because it is radar. However, examples below illustrate the important differences between the radar:
+Reflectivity - differential_reflectivity - describes what waves come back in the visible light range. Great for detecting objects.
 
+Velocity - velocity - describes the horizontal speed of the object. Also: - spectrum_width - distribution of velocities within a single radar pixel.
 
-The field associated with the images is reflectivity, which refers to the information given by the reflection of waves back to the radar.
+****Plotting:****
 
-All other fields associated with NEXRAD: cross_correlation_ratio, spectrum_width, differential_phase, velocity, differential_reflectivity
-
-cross_correlation_ratio: This describes the roundness of an objects. Great tool to determine whether a data point is participation or not, since the greater this value, the more probable it is participation. (participation is usually small and droplets are round-like) 
-
-spectrum_width: distribution of velocities within a single radar pixel
-
+The files generally contain just a single float value in a 2D array. We can convert the values to color and display them in Unidata IVD.
 
 
 **ADDRESSING PREPROCESSING**
 
-The largest limitation currently is the massive amount of datapoints we are dealing with per day of data. Each day has 20 images associated with it and only one 'status' classification. We will have to not only blur and crop the images (as most points outside a certain radius are just 0), but likely find an additional method to reduce how many points are being processed, such as selecting a only subset of days out of the entire dataset to train our model with. To avoid bias such as differences in weather due to seasons, we would have to randomize this.
+The largest limitation currently is the massive amount of datapoints we are dealing with per day. Each day has 20 images associated with (51K values even if we only use 3 columns) and only a single 'status' classification. We will have to not only crop the images, but likely find an additional method to reduce how many points are being processed. Data outside of 150 km radius of the radar cannot show birds, and if it is contaminated outside of 250km, the scientist didn't mark it as contaminated. Those parts of the images are cropped.
+
+We are still considering multiple ways to reduce the data size. One of the most promising ideas we have is we would do a sampling of the images and set an integer based on the sample. For example: we would look for high values of roundness and if that reaches a certain treshold in the data, we would assume it contains participation and set a certain value for the image. Add the images values together from the different timestamped images from the same day and feed that single integer to the Neural Network. That single integer may be standardized. This model could nicely work out if the anomalies are distinct and we find the right thresolds.
 
 *Jupyter Notebook data download and environment setup requirements: !wget !unzip like functions as well as !pip install functions for non standard libraries not available in colab are required to be in the top section of your jupyter lab notebook. Please see HW2 & HW3 for examples.*
 
