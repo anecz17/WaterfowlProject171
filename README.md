@@ -4,34 +4,31 @@ Group Project for ECS 171
 **OBJECTIVE**
 Create a machine learning model that takes a day of NEXRAD readings and correctly classifies the day as contaminated or not.
 
-
-*Perform the data exploration step (i.e. evaluate your data, # of observations, details about your data distributions, scales, missing data, column descriptions) Note: For image data you can still describe your data by the number of classes, # of images, size of images, are sizes standardized? do they need to be cropped? normalized? etc.*
+**DATA EXPLORATION**
 
 Number of images:
 There are 20 radar stations, each has at least 150 screened days and each day contains 20 files. These files could be seen as images, but they only contain float values connected to the pixels of the image in a 2D array.
 
 Size of images:
-The size of an image is generally 720x1192.
+The size of an image is 720x1192.
 
-Putting size and the numbers together, we get that the total dataset we work with contains 514 Billion data points.
+Putting size and the number of images together, we get that the total dataset we work with contains 51 Billion data points (20 * 150 * 720 * 1192).
 
-Are sizes standardized: Yes! We are working with NEXRAD Level II data.
+Are sizes standardized: Yes. We are pulling image information from the NEXRAD Level II files, so all image sizes are standarized.
 
-*Plot your data. For tabular data, you will need to run scatters, for image data, you will need to plot your example classes.*
+**PLOTTING DATA**
+Plotting images is something we're still working through because it is radar. However, examples below illustrate the important differences between the radar:
 
-Classes plotted on COLAB: cross_correlation_ratio, spectrum_width, differential_phase, velocity, differential_reflectivity, reflectivity
+
+The field associated with the images is reflectivity, which refers to the information given by the reflection of waves back to the radar.
+
+All other fields associated with NEXRAD: cross_correlation_ratio, spectrum_width, differential_phase, velocity, differential_reflectivity
 
 cross_correlation_ratio: This describes the roundness of an objects. Great tool to determine whether a data point is participation or not, since the greater this value, the more probable it is participation. (participation is usually small and droplets are round-like) 
 
-spectrum_width: 
+spectrum_width: distribution of velocities within a single radar pixel
 
-differential_phase:
 
-velocity:
-
-differential_reflectivity:
-
-reflectivity:
 
 **ADDRESSING PREPROCESSING**
 
@@ -39,5 +36,6 @@ The largest limitation currently is the massive amount of datapoints we are deal
 
 *Jupyter Notebook data download and environment setup requirements: !wget !unzip like functions as well as !pip install functions for non standard libraries not available in colab are required to be in the top section of your jupyter lab notebook. Please see HW2 & HW3 for examples.*
 
+**GOOGLE COLAB**
 https://colab.research.google.com/drive/16n72hFmsJis-llT24E0w4_E6ShFTNLNy?usp=sharing
 
