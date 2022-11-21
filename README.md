@@ -49,6 +49,8 @@ The first case we are looking at is a "Contaminated" day. We are looking at 3 ra
 ![Screenshot 2022-11-20 233413](https://user-images.githubusercontent.com/114206854/202993777-372c776d-a983-49fc-bf37-bd859569b50e.png)
 ![Screenshot 2022-11-20 233501](https://user-images.githubusercontent.com/114206854/202993778-037b2f48-a04e-4977-a240-48e00af2250e.png)
 ![Screenshot 2022-11-20 232918](https://user-images.githubusercontent.com/114206854/202993790-391901a5-2ad6-4d7b-91db-97dd094ccbf0.png)
+
+The second case we are looking at is a "Non Contaminated" day
 ![Screenshot 2022-11-20 233625](https://user-images.githubusercontent.com/114206854/202993781-f267eca0-5fba-4401-83d5-8dcd79b108b3.png)
 ![Screenshot 2022-11-20 233701](https://user-images.githubusercontent.com/114206854/202993782-ae21eb88-16bd-4340-9ea8-a4681ae24c81.png)
 ![Screenshot 2022-11-20 233754](https://user-images.githubusercontent.com/114206854/202993783-c33f44cb-40f3-494e-adbb-46bcf80f8b3b.png)
