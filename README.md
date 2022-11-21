@@ -7,6 +7,12 @@ Create a machine learning model that takes a day of NEXRAD readings and correctl
 
 **DATA EXPLORATION**
 
+****The whole data of the project has 2 origins.****
+
+The main origin of data is the National Weather Surveillance Radar Networkis = "NEXRAD" Level II files. These files stored on AWS and all of them has to be pulled thru an API.
+
+The other origin is the evaluatiion of scientist whether the data is contaminated or not. This information is stored in excel spreadsheets.
+
 ****Size of raw data:****
 
 Images are pulled from the NEXRAD Level II files, so all image sizes are standarized.
@@ -29,7 +35,7 @@ Velocity - velocity - describes the horizontal speed of the object. Also: - spec
 
 ****Plotting:****
 
-The files generally contain just a single float value in a 2D array. We can convert the values to color and display them in Unidata IVD.
+The files contain 72 column, each of them is a 2D array of floats. We can convert the floats to colors and display them in Unidata IVD.
 
 
 **ADDRESSING PREPROCESSING**
