@@ -43,12 +43,13 @@ Velocity - velocity - describes the horizontal speed of the object. Also: - spec
 
 ****Plotting:****
 The first case we are looking at is a "Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
-![Screenshot 2022-11-20 233144](https://user-images.githubusercontent.com/114206854/202993770-80ba9e39-b414-4c8a-b1f4-255e6244ccea.png)
-![Screenshot 2022-11-20 233245](https://user-images.githubusercontent.com/114206854/202993774-7dbbe2b0-32a2-4b98-bbd5-139a45075180.png)
-![Screenshot 2022-11-20 233319](https://user-images.githubusercontent.com/114206854/202993776-ef5926d2-f717-489b-a937-3ff83cee24dd.png)
-![Screenshot 2022-11-20 233413](https://user-images.githubusercontent.com/114206854/202993777-372c776d-a983-49fc-bf37-bd859569b50e.png)
-![Screenshot 2022-11-20 233501](https://user-images.githubusercontent.com/114206854/202993778-037b2f48-a04e-4977-a240-48e00af2250e.png)
-![Screenshot 2022-11-20 232918](https://user-images.githubusercontent.com/114206854/202993790-391901a5-2ad6-4d7b-91db-97dd094ccbf0.png)
+
+![1](https://user-images.githubusercontent.com/84054117/202995723-4ba992d7-ce57-4dab-835d-03bcccff4ee3.png)
+![2](https://user-images.githubusercontent.com/84054117/202995724-fde5109c-6773-4c06-b29f-69efd51e952c.png)
+![3](https://user-images.githubusercontent.com/84054117/202995727-647ade41-302e-4afb-8687-f8b5a218b1d7.png)
+![4](https://user-images.githubusercontent.com/84054117/202995728-5e00da31-0144-4ba5-b921-ec894e355d75.png)
+![5](https://user-images.githubusercontent.com/84054117/202995882-71bd620b-3f4b-4ac8-a7f1-e2eb961adc46.png)
+![6](https://user-images.githubusercontent.com/84054117/202995721-f5e9cf8c-d522-433e-8723-249361e81019.png)
 
 
 The second case we are looking at is a "Non Contaminated" day.
