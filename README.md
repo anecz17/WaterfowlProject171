@@ -42,7 +42,7 @@ Reflectivity - differential_reflectivity - describes what waves come back in the
 Velocity - velocity - describes the horizontal speed of the object. Also: - spectrum_width - distribution of velocities within a single radar pixel.
 
 ****Plotting:****
-The first case we are looking at is a "Non Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
+The first case we are looking at is a "Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
 ![Screenshot 2022-11-20 233144](https://user-images.githubusercontent.com/114206854/202993770-80ba9e39-b414-4c8a-b1f4-255e6244ccea.png)
 ![Screenshot 2022-11-20 233245](https://user-images.githubusercontent.com/114206854/202993774-7dbbe2b0-32a2-4b98-bbd5-139a45075180.png)
 ![Screenshot 2022-11-20 233319](https://user-images.githubusercontent.com/114206854/202993776-ef5926d2-f717-489b-a937-3ff83cee24dd.png)
