@@ -35,7 +35,7 @@ Therefore the total amount of data we work with: 20 x 150 x 20 x 3 x 720 x 1192 
 
 The columns we planning to work with are correlation coeffitient, reflectivity and velocity. (More discussion is needed and we may add a couple more to better sort out special cases/anomalies.)
 
-Correlation Coeffitient - cross_correlation_ratio - describes the roundness of an objects. Great tool to determine whether a data point is participation or not, since the greater this value, the more probable it is participation. (participation is small and droplets are round-shaped)
+Correlation Coeffitient - cross_correlation_ratio - describes the roundness of an objects. Great tool to determine whether a data point is precipation or not, since the greater this value, the more probable it is precipation. (precipation is small and droplets are round-shaped)
 
 Reflectivity - differential_reflectivity - describes what waves come back in the visible light range. Great for detecting objects.
 
@@ -55,12 +55,14 @@ The first case we are looking at is a "Contaminated" day. We are looking at 3 ra
 The second case we are looking at is a "Non Contaminated" day.
 
 
-![Screenshot 2022-11-20 233625](https://user-images.githubusercontent.com/114206854/202993781-f267eca0-5fba-4401-83d5-8dcd79b108b3.png)
-![Screenshot 2022-11-20 233701](https://user-images.githubusercontent.com/114206854/202993782-ae21eb88-16bd-4340-9ea8-a4681ae24c81.png)
-![Screenshot 2022-11-20 233754](https://user-images.githubusercontent.com/114206854/202993783-c33f44cb-40f3-494e-adbb-46bcf80f8b3b.png)
-![Screenshot 2022-11-20 233838](https://user-images.githubusercontent.com/114206854/202993784-52f58f3d-88f5-4d9f-8952-7caaf2e28d43.png)
-![Screenshot 2022-11-20 233932](https://user-images.githubusercontent.com/114206854/202993785-2a7d6969-2842-48af-b07b-4d5730345077.png)
-![Screenshot 2022-11-20 234000](https://user-images.githubusercontent.com/114206854/202993789-87fc0a26-be45-4860-8d53-287ccaddc088.png)
+
+
+![7](https://user-images.githubusercontent.com/84054117/203115483-f6d8ec46-403f-4c55-aae1-e3ca20d6c711.png)
+![8](https://user-images.githubusercontent.com/84054117/203115486-7cb3e909-0873-48cc-b72e-1abc59067609.png)
+![9](https://user-images.githubusercontent.com/84054117/203115487-d862714e-26b9-4649-88da-cea4d8b279f6.png)
+![10](https://user-images.githubusercontent.com/84054117/203115488-7d7343de-7c4c-46e0-8b3c-105293f47b12.png)
+![11](https://user-images.githubusercontent.com/84054117/203115490-11087c64-c042-4cec-8668-38ccf6b0202c.png)
+![12](https://user-images.githubusercontent.com/84054117/203115481-d2affd1b-d1ba-42c7-a536-237032c5f7bf.png)
 
 
 The files contain 72 column, each of them is a 2D array of floats. We can convert the floats to colors and display them in Unidata IVD.
