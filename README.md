@@ -2,6 +2,7 @@
 Group Project for ECS 171
 
 **OBJECTIVE**
+
 Create a machine learning model that takes a day of NEXRAD readings and correctly classifies the day as contaminated or not.
 
 **DATA EXPLORATION**
@@ -17,6 +18,7 @@ Putting size and the number of images together, we get that the total dataset we
 Are sizes standardized: Yes. We are pulling image information from the NEXRAD Level II files, so all image sizes are standarized.
 
 **PLOTTING DATA**
+
 Plotting images is something we're still working through because it is radar. However, examples below illustrate the important differences between the radar:
 
 
@@ -37,5 +39,6 @@ The largest limitation currently is the massive amount of datapoints we are deal
 *Jupyter Notebook data download and environment setup requirements: !wget !unzip like functions as well as !pip install functions for non standard libraries not available in colab are required to be in the top section of your jupyter lab notebook. Please see HW2 & HW3 for examples.*
 
 **GOOGLE COLAB**
+
 https://colab.research.google.com/drive/16n72hFmsJis-llT24E0w4_E6ShFTNLNy?usp=sharing
 
