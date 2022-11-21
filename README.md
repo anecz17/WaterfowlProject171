@@ -42,6 +42,18 @@ Reflectivity - differential_reflectivity - describes what waves come back in the
 Velocity - velocity - describes the horizontal speed of the object. Also: - spectrum_width - distribution of velocities within a single radar pixel.
 
 ****Plotting:****
+![Screenshot 2022-11-20 233144](https://user-images.githubusercontent.com/114206854/202993770-80ba9e39-b414-4c8a-b1f4-255e6244ccea.png)
+![Screenshot 2022-11-20 233245](https://user-images.githubusercontent.com/114206854/202993774-7dbbe2b0-32a2-4b98-bbd5-139a45075180.png)
+![Screenshot 2022-11-20 233319](https://user-images.githubusercontent.com/114206854/202993776-ef5926d2-f717-489b-a937-3ff83cee24dd.png)
+![Screenshot 2022-11-20 233413](https://user-images.githubusercontent.com/114206854/202993777-372c776d-a983-49fc-bf37-bd859569b50e.png)
+![Screenshot 2022-11-20 233501](https://user-images.githubusercontent.com/114206854/202993778-037b2f48-a04e-4977-a240-48e00af2250e.png)
+![Screenshot 2022-11-20 233625](https://user-images.githubusercontent.com/114206854/202993781-f267eca0-5fba-4401-83d5-8dcd79b108b3.png)
+![Screenshot 2022-11-20 233701](https://user-images.githubusercontent.com/114206854/202993782-ae21eb88-16bd-4340-9ea8-a4681ae24c81.png)
+![Screenshot 2022-11-20 233754](https://user-images.githubusercontent.com/114206854/202993783-c33f44cb-40f3-494e-adbb-46bcf80f8b3b.png)
+![Screenshot 2022-11-20 233838](https://user-images.githubusercontent.com/114206854/202993784-52f58f3d-88f5-4d9f-8952-7caaf2e28d43.png)
+![Screenshot 2022-11-20 233932](https://user-images.githubusercontent.com/114206854/202993785-2a7d6969-2842-48af-b07b-4d5730345077.png)
+![Screenshot 2022-11-20 234000](https://user-images.githubusercontent.com/114206854/202993789-87fc0a26-be45-4860-8d53-287ccaddc088.png)
+![Screenshot 2022-11-20 232918](https://user-images.githubusercontent.com/114206854/202993790-391901a5-2ad6-4d7b-91db-97dd094ccbf0.png)
 
 The files contain 72 column, each of them is a 2D array of floats. We can convert the floats to colors and display them in Unidata IVD.
 
