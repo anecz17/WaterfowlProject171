@@ -7,7 +7,7 @@ Create a machine learning model that takes a day of NEXRAD readings and correctl
 
 **DATA EXPLORATION**
 
-****The whole data of the project has 2 origins.****
+****The whole data has 2 origins:****
 
 The main origin of data is the National Weather Surveillance Radar Networkis = "NEXRAD" Level II files. These files stored on AWS and all of them has to be pulled thru an API.
 
