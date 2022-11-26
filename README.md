@@ -46,7 +46,7 @@ Velocity - Speed of the objects in the area being scanned.
 
 Radial Velocity - rate of change of the distance or range between the two points. Used to ditinguis bird and insect movement
 
-Height/angle - These scans are binned in various angles above the horizon. We primarily use the lowest angle bin available in the scan (which is about 0.5°). This angle can have signals from birds taking off into the sky and weather signals. I assume that higher angles could exhibit both birds and weather signals, but I think it is more likely weather. At any rate, we tend to not look at these data streams in our process. - may be ignored in our project
+Height/angle - These scans are binned in various angles above the horizon. We primarily use the lowest angle bin available in the scan (which is about 0.5°). This angle can have signals from birds taking off into the sky and weather signals. I assume that higher angles could exhibit both birds and weather signals, but I think it is more likely weather - may be ignored in our project
 
 Spectrum_width - Depicts a measure of velocity dispersion. In a radar bin, it provides a measure of the variability of the mean radial velocity estimates (movement) due to wind shear, turbulence, and/or the quality of the velocity samples. The proper use of Spectrum Width can help the severe thunderstorm and tornado warning decision process. --not useful for us.
 
