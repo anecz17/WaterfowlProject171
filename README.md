@@ -44,7 +44,7 @@ Differential_reflectivity - Change in the intensity of the reflectivity signal.
 
 Velocity - Speed of the objects in the area being scanned.
 
-Radial Velocity - 
+Radial Velocity - rate of change of the distance or range between the two points. Used to ditinguis bird and insect movement
 
 Height/angle - These scans are binned in various angles above the horizon. We primarily use the lowest angle bin available in the scan (which is about 0.5°). This angle can have signals from birds taking off into the sky and weather signals. I assume that higher angles could exhibit both birds and weather signals, but I think it is more likely weather. At any rate, we tend to not look at these data streams in our process. - may be ignored in our project
 
