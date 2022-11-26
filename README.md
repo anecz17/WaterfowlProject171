@@ -70,10 +70,11 @@ The second case we are looking at is a "Non Contaminated" day.
 
 ![7](https://user-images.githubusercontent.com/84054117/203115483-f6d8ec46-403f-4c55-aae1-e3ca20d6c711.png)
 ![8](https://user-images.githubusercontent.com/84054117/203115486-7cb3e909-0873-48cc-b72e-1abc59067609.png)
-![9](https://user-images.githubusercontent.com/84054117/203115487-d862714e-26b9-4649-88da-cea4d8b279f6.png)
 ![10](https://user-images.githubusercontent.com/84054117/203115488-7d7343de-7c4c-46e0-8b3c-105293f47b12.png)
-![11](https://user-images.githubusercontent.com/84054117/203115490-11087c64-c042-4cec-8668-38ccf6b0202c.png)
+![9](https://user-images.githubusercontent.com/84054117/203115487-d862714e-26b9-4649-88da-cea4d8b279f6.png)
 ![12](https://user-images.githubusercontent.com/84054117/203115481-d2affd1b-d1ba-42c7-a536-237032c5f7bf.png)
+![11](https://user-images.githubusercontent.com/84054117/203115490-11087c64-c042-4cec-8668-38ccf6b0202c.png)
+
 
 
 The files contain 72 column, each of them is a 2D array of floats. We can convert the floats to colors and display them in Unidata IVD.
