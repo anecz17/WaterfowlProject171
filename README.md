@@ -9,9 +9,10 @@ Create a machine learning model that takes a day of NEXRAD readings and correctl
 
 ****The whole data has 2 origins:****
 
-The main origin of data is the National Weather Surveillance Radar Networkis = "NEXRAD" Level II files. These files stored on AWS and all of them has to be pulled thru an API.
+The main origin of data is the National Weather Surveillance Radar Networkis = "NEXRAD" Level II files. These files stored on AWS and all of them has to be pulled thru an API. 
+_The way that the technology works is that these radars are sending out EMR waves at various angles and are measuring how much of the signal is reflected off of objects in the sky such as biological life and precipitation. There is essentially one raw data stream that gets processed into the various data types._
 
-The other origin is the evaluatiion of scientist whether the data is contaminated or not. This information is stored in excel spreadsheets.
+The other origin is the evaluation of scientist whether the data is contaminated or not. This information is stored in excel spreadsheets.
 
 ****Spreadsheets****
 
@@ -19,7 +20,7 @@ The spreadsheets contain information that are not in the NEXRAD files. For examp
 
 Moreover, the spreadsheet contains the following columns:
 RADAR,	DATE,	SEASON,	DOWNLOAD,	STATUS,	CONTAMINATION_TYPE,	TARGET_ID,	SCREENER,	SURFACE_WIND,	WIND_DIRECTION,	APPROXIMATE_SAMPLING_TIME,	TARGET_SPEED,	GROUND_HEADING,	COMMENTS -- We are interested in status, the date to evaluate the day based on status.
-
+ 
 
 ****NEXRAD -- Size of raw data:****
 
@@ -29,17 +30,27 @@ There are 20 radar stations, each has at least 150 screened days and each day co
     
 Every file has a total of 72 columns. Every column has 720x1192 data points - sizes are standardized. Columns could be interpeted as images and data points as pixels. But we are only interested in a couple in the order of 3-7. (Discussion is still going on with the biologists to understand which variables indicate bird movement and which variables indicate other origins.)
     
-Therefore the total amount of data we work with: 20 x 150 x 20 x 3 x 720 x 1192 = ~150 Billion primitive values
+Therefore the total amount of data we work with: 20 x 150 x 20 x 3 x 720 x 1192 = ~150 Billion primitive values.
 
   As we can see the data size is huge. These values are not normalized, and their distribution is unknown. We will sort out the missing values. We have other excel files that contain y values, basically whether the day was contaminated by other movement or not. The data is not normalized, it has whatever value it captured, but if we would look at all the data in the columns we could generally set a range.
 
 The columns we planning to work with are correlation coeffitient, reflectivity and velocity. (More discussion is needed and we may add a couple more to better sort out special cases/anomalies.)
 
-Correlation Coeffitient - cross_correlation_ratio - describes the roundness of an objects. Great tool to determine whether a data point is precipation or not, since the greater this value, the more probable it is precipation. (precipation is small and droplets are round-shaped)
+Correlation Coeffitient - Roundness of the object. Values close to 1 are spheres, which are likely precipitation, though it could be bugs depending on the time of day, season, and location. Around 0.8 is typically biological.
 
-Reflectivity - differential_reflectivity - describes what waves come back in the visible light range. Great for detecting objects.
+Reflectivity - The intensity of the EMR wave that is reflected. The idea is that the stronger the reflected signal, the more objects there are in that region being scanned
 
-Velocity - velocity - describes the horizontal speed of the object. Also: - spectrum_width - distribution of velocities within a single radar pixel.
+Differential_reflectivity - Change in the intensity of the reflectivity signal.
+
+Velocity - Speed of the objects in the area being scanned.
+
+Radial Velocity - 
+
+Height/angle - These scans are binned in various angles above the horizon. We primarily use the lowest angle bin available in the scan (which is about 0.5°). This angle can have signals from birds taking off into the sky and weather signals. I assume that higher angles could exhibit both birds and weather signals, but I think it is more likely weather. At any rate, we tend to not look at these data streams in our process. - may be ignored in our project
+
+Spectrum_width - Depicts a measure of velocity dispersion. In a radar bin, it provides a measure of the variability of the mean radial velocity estimates (movement) due to wind shear, turbulence, and/or the quality of the velocity samples. The proper use of Spectrum Width can help the severe thunderstorm and tornado warning decision process. --not useful for us.
+
+We primarily use the Reflectivity and Correlation Coefficient to determine the status of the data for that day.
 
 ****Plotting:****
 The first case we are looking at is a "Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
