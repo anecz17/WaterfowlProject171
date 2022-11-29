@@ -105,3 +105,9 @@ https://drive.google.com/file/d/12LogSdZTVbxkuO8XF6-a_3MeGVH-_wmg/view?usp=share
 
 https://colab.research.google.com/drive/16n72hFmsJis-llT24E0w4_E6ShFTNLNy?usp=sharing
 
+
+Preprocessing  & First Model
+
+![image](https://user-images.githubusercontent.com/84054117/204469913-15516249-62b1-4feb-9c9c-b49deaad6560.png)
+
+
