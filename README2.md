@@ -38,5 +38,10 @@ no waterfowl were harmed in the training of this model
 
 ## Collaboration
 
-| Colton Perazzo  | Daria Buka | Mitchell Davis | Andras Necz | Zachary Oren | Jonathan Wesely |
+<div align="center">
+
+| Andras Necz | Daria Buka | Mitchell Davis | Colton Perazzo | Zachary Oren | Jonathan Wesely |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Leader | Coder & Writer | Coder | Coder & Writer | Coder | Coder |
+
+</div>
