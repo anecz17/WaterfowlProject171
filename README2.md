@@ -30,6 +30,9 @@ Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America
 
 ## Methods
 
+### Data Exploration
+### Preprocessing
+
 ## Results
 
 ## Discussion
