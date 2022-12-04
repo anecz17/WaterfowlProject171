@@ -1,6 +1,6 @@
-![image](https://i.ibb.co/d5gdp47/image.png)
-
 <div align="center">
+
+![image](https://i.ibb.co/d5gdp47/image.png)
 
 # ECS 171 Waterfowl Project
 [![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
