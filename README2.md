@@ -6,6 +6,8 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
+this **waterfowl project** was made with love :heart:
+
 [Introduction](#introduction) •
 [Figures](#figures) •
 [Methods](#methods) •
