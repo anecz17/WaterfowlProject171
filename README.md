@@ -1,5 +1,14 @@
-# Waterfowl Project - ECS 171
-Group Project for ECS 171
+![image](https://media.discordapp.net/attachments/1019858353679249428/1049074738510708796/ECS_171_Waterfowl_Migration_Model.png?width=1844&height=553)
+
+**Introduction**
+Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry at over 650 premises in 42 states with a total economic impact of over $2 billion dollars and counting. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. We use various remote sensing datasets by the government (USGS and CDFA), industry (California Poultry Federation and the Pacific Egg and Poultry Association) and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would results in more robust and continuously improving models.
+
+**Methods**
+Data Exploration
+Preprocessing Model
+Model
+
+
 
 **OBJECTIVE**
 
@@ -103,11 +112,6 @@ https://drive.google.com/file/d/12LogSdZTVbxkuO8XF6-a_3MeGVH-_wmg/view?usp=share
 
 **GOOGLE COLAB**
 
-https://colab.research.google.com/drive/16n72hFmsJis-llT24E0w4_E6ShFTNLNy?usp=sharing
-
-
 **Preprocessing  & First Model**
 
-![image](https://user-images.githubusercontent.com/84054117/204469913-15516249-62b1-4feb-9c9c-b49deaad6560.png)
-
-
+[![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16n72hFmsJis-llT24E0w4_E6ShFTNLNy?usp=sharing)
