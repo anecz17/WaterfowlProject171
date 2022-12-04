@@ -10,7 +10,7 @@ Created for *ECS 171 - Machine Learning* <br />
 Professor Edwin Solares <br />
 University of California, Davis
 
-this **waterfowl project** was made with love :heart:
+this **waterfowl project** was made with love :heart:, sweat :sweat_drops: and (maybe some tears :sleepy:)
 
 [Introduction](#introduction) •
 [Figures](#figures) •
