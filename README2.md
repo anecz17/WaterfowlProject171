@@ -13,6 +13,8 @@ University of California, Davis
 
 Objective: create a machine learning model that takes a day of NEXRAD readings and correctly classifies the day as contaminated or not.
 
+Keywords: *waterfowl*, *machine learning*, *nexrad*, *convolution*
+
 [Introduction](#introduction) •
 [Figures](#figures) •
 [Methods](#methods) •
