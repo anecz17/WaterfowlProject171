@@ -33,7 +33,26 @@ Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America
 ## Methods
 
 ### Data Exploration
+
+In our model, our data comes from two sources:
+1. NEXRAD Level II Files
+2. Containment Spreadsheets
+
+#### NEXRAD Level II Files
+The NEXRAD Level II Files (National Weather Surveillance Radar Network) are stored on an Amazon Web Server found [here](https://s3.amazonaws.com/noaa-nexrad-level2/index.html). These data files are essentially data from radars that are sending our EMR waves at various angles- these radars measure how much of the signal is refelected off of objects in the sky (such as biological life and precipitation). 
+
+#### Containment Spreadsheets
+Another source of data used in this model is containment information stored in excel spreadsheets. These spreadsheets include the evaluation from scientists at [Agrinerds](https://www.agrinerds.com/) on wheter or not the data is contaminated or not. 
+
+
+
+
+
+
+
 ### Preprocessing
+
+### Modeling
 
 ## Results
 
