@@ -39,10 +39,12 @@ In our model, our data comes from two sources:
 2. Containment Spreadsheets
 
 #### NEXRAD Level II Files
-The NEXRAD Level II Files (National Weather Surveillance Radar Network) are stored on an Amazon Web Server found [here](https://s3.amazonaws.com/noaa-nexrad-level2/index.html). These data files are essentially data from radars that are sending our EMR waves at various angles- these radars measure how much of the signal is refelected off of objects in the sky (such as biological life and precipitation). 
+The NEXRAD Level II Files (National Weather Surveillance Radar Network) are stored on an Amazon Web Server found [here](https://s3.amazonaws.com/noaa-nexrad-level2/index.html). These data files are essentially data from radars that send out EMR waves at various angles. With this in mind, these radars measure how much of the signal is refelected off of objects in the sky (such as biological life and precipitation) and then sends all of the raw data stream processed into various data types. 
 
 #### Containment Spreadsheets
-Another source of data used in this model is containment information stored in excel spreadsheets. These spreadsheets include the evaluation from scientists at [Agrinerds](https://www.agrinerds.com/) on wheter or not the data is contaminated or not. 
+Another source of data used in this model is containment information stored in excel spreadsheets. These spreadsheets include the evaluation from scientists at [Agrinerds](https://www.agrinerds.com/) on wheter or not the data is contaminated or not. Moreover, these spreadsheets contain various columns: ```RADAR```, ```DATE```, ```SEASON```, ```DOWNLOAD```, ```STATUS```, ```CONTAMINATION_TYPE```, ```TARGET_ID```, ```SCREENER```, ```SURFACE_WIND```, ```WIND_DIRECTION```, ```APPROXIMATE_SAMPLING_TIME```, ```TARGET_SPEED```, ```GROUND_HEADING```, ```COMMENTS```.
+
+We are interested in the ```STATUS``` column which specifies if the specific day is containtment or not. This is implied by either a ```B``` or ```C``` value found in this column where ```B``` stands for **birds** (not containment) and ```C``` stands for containment (self-explanatory).
 
 
 
