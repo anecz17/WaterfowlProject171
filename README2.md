@@ -11,8 +11,7 @@ Created for *ECS 171 - Machine Learning* <br />
 Professor Edwin Solares <br />
 University of California, Davis
 
-this **waterfowl project** was made with love :heart:, sweat :droplet: (and maybe some tears :sleepy:) <br />
-no waterfowl were harmed in the training of this model
+Objective: create a machine learning model that takes a day of NEXRAD readings and correctly classifies the day as contaminated or not.
 
 [Introduction](#introduction) •
 [Figures](#figures) •
