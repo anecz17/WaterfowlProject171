@@ -41,10 +41,22 @@ In our model, our data comes from two sources:
 #### NEXRAD Level II Files
 The NEXRAD Level II Files (National Weather Surveillance Radar Network) are stored on an Amazon Web Server found [here](https://s3.amazonaws.com/noaa-nexrad-level2/index.html). These data files are essentially data from radars that send out EMR waves at various angles. With this in mind, these radars measure how much of the signal is refelected off of objects in the sky (such as biological life and precipitation) and then sends all of the raw data stream processed into various data types. 
 
+There are 20 radar stations provided by the NEXRAD platform. Each of these stations has at least 150 screened days, where each day can contain up to 250 data files. Furthermore, these radar stations take a snapshot of the local environment every 10 minutes. In this project, we are generally working with around 20 files a day as we are only interested in the 3.5 hour (~200 minute) window around sunset. This has a distinct purpose due to the biological habit of waterfowl going out for their nightly feeds after sunset.
+
+Every NEXRAD file being used has a total of ```72``` column, however we are only interested in a small subset of columns for our model. Every column has ```720x1192``` data points where the sizes are standardized. We are interpertating columns as images and data points as pixels. Therefore, the total amount of data we have the ability to work with is ``` 20 x 150 x 20 x 3 x 720 x 1192``` = ~150 billion primitve values. 
+
+We are planning to work with the following data columns: ```correlation coefficient```, ```reflectivity```, and ```velocity```.
+
+• ```correlation coefficient``` - Roundness of the object, values closest to 1 are spheres which most likely is percipation (or bugs depending on the time of day, season and radar location). A value around 0.8 is usually biological, or waterfowl in our usecase.
+
+• ```reflectivity``` - Intensity of the EMR wave that is refelected back to the radar. The stronger the reflected signal- the more total objects that are in the scanned region.
+
+• ```velocity``` - Speed of the total objects in the scanned region.
+
 #### Containment Spreadsheets
 Another source of data used in this model is containment information stored in excel spreadsheets. These spreadsheets include the evaluation from scientists at [Agrinerds](https://www.agrinerds.com/) on wheter or not the data is contaminated or not. Moreover, these spreadsheets contain various columns: ```RADAR```, ```DATE```, ```SEASON```, ```DOWNLOAD```, ```STATUS```, ```CONTAMINATION_TYPE```, ```TARGET_ID```, ```SCREENER```, ```SURFACE_WIND```, ```WIND_DIRECTION```, ```APPROXIMATE_SAMPLING_TIME```, ```TARGET_SPEED```, ```GROUND_HEADING```, ```COMMENTS```.
 
-We are interested in the ```STATUS``` column which specifies if the specific day is containtment or not. This is implied by either a ```B``` or ```C``` value found in this column where ```B``` stands for **birds** (not containment) and ```C``` stands for containment (self-explanatory).
+We are interested in the ```STATUS``` column which specifies if the specific day is containtment or not. This is implied by either a ```B``` or ```C``` value found in this column. ```B``` stands for **birds** (not containment) and ```C``` stands for containment (self-explanatory).
 
 
 
