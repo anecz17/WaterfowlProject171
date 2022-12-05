@@ -98,7 +98,7 @@ outpath<-"saving_path"
 
 </div>
 
-• ```Andras Necz``` <br />
+- ```Andras Necz``` <br />
     - Team leader and contributed to the organization of the project idea and overall project.
 • ```Daria Buka``` <br />
 • ```Mitchell Davis``` <br />
