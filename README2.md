@@ -61,6 +61,21 @@ We are interested in the ```STATUS``` column which specifies if the specific day
 ### Preprocessing
 Due to the large amount of data in the NEXRAD files, we took a computer/cloud approach to store these files for preprocessing. In order to download the massively RAW archived NEXRAD files from our selected station, we used an R script provided by [Agrinerds](https://www.agrinerds.com/) to batch download data. The provided R scripts can be found within the repo [here](downloadnexrad_folders_original.R).
 
+The above R script has a few customizable settings in which we edited to download the correct data we wanted.
+```R
+radar<-"station_name"
+screening<-"station_screening.xls"  ## name of screening spreadsheet
+nexrad<-read.csv("station_path")  ## location of nexrad site file
+
+outpath<-"saving_path"              # base location to save data
+```
+
+• ```radar``` - Station name. (eg: ```LVX```)
+• ```screening``` - Name of the contatinment spreadsheet for the selected station. (eg: ```KLVX_allscreening.xls```)
+• ```nexrad``` - Path of the CSV file that includes data about all NEXRAD stations. (found [here](nexrad_site_list_with_utm.csv) in repo)
+• ```outpath``` - Path to save all of the RAW archived data. 
+
+
 
 ### Modeling
 
