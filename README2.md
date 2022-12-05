@@ -58,13 +58,9 @@ Another source of data used in this model is containment information stored in e
 
 We are interested in the ```STATUS``` column which specifies if the specific day is containtment or not. This is implied by either a ```B``` or ```C``` value found in this column. ```B``` stands for **birds** (not containment) and ```C``` stands for containment (self-explanatory).
 
-
-
-
-
-
-
 ### Preprocessing
+Due to the large amount of data in the NEXRAD files, we took a computer/cloud approach to store these files for preprocessing. In order to download the massively RAW archived NEXRAD files from our selected station, we used an R script provided by [Agrinerds](https://www.agrinerds.com/) to batch download data. The provided R scripts can be found within the repo [here](downloadnexrad_folders_original.R).
+
 
 ### Modeling
 

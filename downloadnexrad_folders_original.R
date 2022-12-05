@@ -19,25 +19,16 @@
 # STEP 2. Setup paths and variables #
 #####################################
 {
-radar<-"CLE"
+radar<-"station_name"
 STATION<-paste0("K",radar)
-screening<-"CLE_screening.xls"  ## name of screening spreadsheet
-nexrad<-read.csv("C:/Users/Owner/Desktop/nexrad_site_list_with_utm.csv")  ## location of nexrad site file
+screening<-"station_screening.xls"  ## name of screening spreadsheet
+nexrad<-read.csv("station_path")  ## location of nexrad site file
 dtime<- 1 ## number of hours after sunset you wish to download
 btime<- 1 ## number of hours before sunset you wish to download (if 0, the program will download files rounded down to nearest hour to sunset)
 
-OneDrive <- FALSE ## are you downloading to OneDrive? TRUE for yes, FALSE for no
-if (OneDrive==T){
- path<-"C:/Users/jsmolinsky/OneDrive - DOI/General/WSR Data/Radar Screening Excel Files"  # location of screening spreadsheet
- outpath<-"C:/Users/jsmolinsky/OneDrive - DOI/General/WSR Data/test/" # base location to save data
- saveLoc<-paste0(outpath,radar) # location to save data, will write into radar-specific folder
- options(timeout=600)  ## allows 10 minutes for data to upload to OneDrive and attempts to prevent timeouts.  Can be adjusted!
-}
-if (OneDrive==F){
-  path<-"C:/Users/Owner/Desktop/Waterfowl/documents/"            # location of screening spreadsheet
-  outpath<-"C:/Users/Owner/Desktop/Waterfowl/data/"              # base location to save data
-  saveLoc<-paste0(outpath,radar)                                 # location to save data, will write to radar-specific folder
-}
+path<-"spreadsheet_path"            # location of screening spreadsheet
+outpath<-"saving_path"              # base location to save data
+saveLoc<-paste0(outpath,radar)    
 }
 
 ####################################################
