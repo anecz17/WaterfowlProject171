@@ -100,8 +100,18 @@ outpath<-"saving_path"
 
 - ```Andras Necz``` <br />
     - Team leader and contributed to the organization of the project idea and overall project.
+
 • ```Daria Buka``` <br />
+    -
+
 • ```Mitchell Davis``` <br />
+    -
+
 • ```Colton Perazzo``` <br />
+    -
+
 • ```Zachary Oren``` <br />
+    -
+
 • ```Johnathan Wesely``` <br />
+    -
