@@ -72,10 +72,12 @@ nexrad<-read.csv("station_path")
 outpath<-"saving_path" 
 ```
 
-• ```radar``` - Station name. (eg: ```LVX```)
-• ```screening``` - Name of the contatinment spreadsheet for the selected station. (eg: ```KLVX_allscreening.xls```)
-• ```nexrad``` - Path of the CSV file that includes data about all NEXRAD stations. (found [here](nexrad_site_list_with_utm.csv) in repo)
+• ```radar``` - Station name. (eg: ```LVX```) <br />
+• ```screening``` - Name of the contatinment spreadsheet for the selected station. (eg: ```KLVX_allscreening.xls```) <br />
+• ```nexrad``` - Path of the CSV file that includes data about all NEXRAD stations. (found [here](nexrad_site_list_with_utm.csv) in repo) <br />
 • ```outpath``` - Path to save all of the RAW archived data. 
+
+(finish talking about folder and file structure, prprocessing and how we parsed data)
 
 ### Modeling
 
