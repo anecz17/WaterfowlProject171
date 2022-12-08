@@ -200,8 +200,8 @@ conv_model.add(Dense(1, activation='sigmoid'))
 ```
 
 ## Results
-1. Thresholded Neural Network
 
+#### Thresholded Neural Network
 This model used a 0.5 threshold and had the following classification report:
 
 ```python
@@ -215,9 +215,7 @@ This model used a 0.5 threshold and had the following classification report:
 weighted avg       0.87      0.85      0.85        89
 ```
 
-
-2. Convolution Neural Network
-
+#### Convolution Neural Network
 We used a 0.5 threshold for the CNN as well:
 ```python
               precision    recall  f1-score   support
