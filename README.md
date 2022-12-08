@@ -223,15 +223,16 @@ weighted avg       0.87      0.85      0.85        89
 
 
 We used a 0.5 threshold for the CNN as well:
-```2/2 [==============================] - 1s 92ms/step
-              precision    recall  f1-score   support
+```
+precision    recall  f1-score   support
 
-         0.0       0.68      0.87      0.76        15
-         1.0       0.90      0.76      0.83        25
+         0.0       0.67      0.94      0.78        17
+         1.0       0.97      0.81      0.89        43
 
-    accuracy                           0.80        40
-   macro avg       0.79      0.81      0.80        40
-weighted avg       0.82      0.80      0.80        40
+    accuracy                           0.85        60
+   macro avg       0.82      0.88      0.83        60
+weighted avg       0.89      0.85      0.86        60
+
 ```
 Both created promising results. Currently, the thresholded neutral network had a higher precision, 87%, while the CNN had a precision of 82%. Full details of these executions are present in the _Preprocessing & Model Building_ Jupyter Notebook.
 
