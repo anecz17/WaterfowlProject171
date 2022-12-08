@@ -32,8 +32,9 @@ Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America
 ## Figures
 We can take a look at some figures to understand our problem a bit more. Firstly, let's take a look at a ```contaminated``` day. Below we are looking at 3 random images taking during the day and we will be exploring two variables. The first variable is ```correlation coefficient``` which represents how round the objects are- preciptation tends to be a lot more round than birds. Lastly, our second variable is ```reflectivity```, which helps us identify where objects are spatially.
 
-##### Contaminated:
 <div align="center">
+
+##### Contaminated:
 
 ![1](https://user-images.githubusercontent.com/84054117/202995723-4ba992d7-ce57-4dab-835d-03bcccff4ee3.png)
 ![2](https://user-images.githubusercontent.com/84054117/202995724-fde5109c-6773-4c06-b29f-69efd51e952c.png)
@@ -44,8 +45,9 @@ We can take a look at some figures to understand our problem a bit more. Firstly
 
 </div>
 
-##### Uncontaminated:
 <div align="center">
+
+##### Uncontaminated:
 
 ![7](https://user-images.githubusercontent.com/84054117/203115483-f6d8ec46-403f-4c55-aae1-e3ca20d6c711.png)
 ![8](https://user-images.githubusercontent.com/84054117/203115486-7cb3e909-0873-48cc-b72e-1abc59067609.png)
