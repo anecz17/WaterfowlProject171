@@ -292,4 +292,5 @@ Given imagery that is soley composed of waterfowl movement, further models can b
     - Main contributor of convolution neural network
 
 - ```Jonathan Wesely``` <br />
-    - Main contributor of convolution neural network
+    - Main contributor of data interpretation and ideas for models
+    - Contributor of thresholded neural network
