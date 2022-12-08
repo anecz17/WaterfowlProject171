@@ -27,7 +27,7 @@ Keywords: *waterfowl*, *machine learning*, *nexrad*, *convolution*
 </div>
 
 ## Introduction
-Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry with a total economic impact of over $2 billion dollars. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. Organizations like Agrinerds use various sensing datasets by the government (USGS and CDFA), industry and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would result in more robust and continuously improving models and vastly help address the issue of poulty biosecurity. **Through various models, we have attempted to automatate classifying waterfowl in NEXRAD radar imagary.**
+Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry with a total economic impact of over $2 billion dollars. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. Organizations like Agrinerds use various sensing datasets by the government (USGS and CDFA), industry and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would result in more robust and continuously improving models and vastly help address the issue of poulty biosecurity. **Through various models, we have trained models to automatate classifying waterfowl presence in NEXRAD radar imagary.**
 
 ## Figures
 We can take a look at some figures to understand our problem a bit more. Firstly, let's take a look at a ```contaminated``` day. Below we are looking at 3 random images taking during the day and we will be exploring two variables. The first variable is ```correlation coefficient``` which represents how round the objects are- preciptation tends to be a lot more round than birds. Lastly, our second variable is ```reflectivity```, which helps us identify where objects are spatially.
@@ -182,6 +182,7 @@ The thresholded model is a Keras Sequential model with the following activation 
   
 2. Convolution Neural Network
 
+The CNN was also a Keras Sequential, but includes a 4x4 2D Convolutional layer. Various complexities of models and types of activation functions were attempted, but this created the most notable result:
 ```
 conv_model2.add(Conv2D(8,(4,4),activation='relu',input_shape=(180,180,2)))
 conv_model2.add(Conv2D(16,(4,4),activation='relu', padding='same'))
@@ -199,6 +200,8 @@ conv_model2.add(Dense(1, activation='sigmoid'))
 ## Results
 1. Thresholded Neural Network
 
+This model used a 0.5 threshold and had the following classification report:
+
 ```
 3/3 [==============================] - 0s 4ms/step
               precision    recall  f1-score   support
@@ -212,7 +215,10 @@ weighted avg       0.87      0.85      0.85        89
 ```
 
 
-2.
+2. Convolution Neural Network
+
+
+We used a 0.5 threshold for the CNN as well:
 ```2/2 [==============================] - 1s 92ms/step
               precision    recall  f1-score   support
 
@@ -223,20 +229,22 @@ weighted avg       0.87      0.85      0.85        89
    macro avg       0.79      0.81      0.80        40
 weighted avg       0.82      0.80      0.80        40
 ```
-
-
-Both created promising results, despite being dissimilar approaches. Currently, the thresholded neutral network had a higher precision, 87%, while the CNN had a precision of 82%. 
+Both created promising results. Currently, the thresholded neutral network had a higher precision, 87%, while the CNN had a precision of 82%. Full details of these executions are present in the _Preprocessing & Model Building_ Jupyter Notebook.
 
 
 ## Discussion
-Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all reflectivety and [...] values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last few final models.
+Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all correlation coefficient, reflectivety,and velocity values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last final models. This is unfortunate, as it could have allowed more time to create a accurate model.
 
-One of the main limitations of this current model is that it was composed of around 450 datapoints and not a large set. The size limitations were immense, as this was the culmination of working with over 50 GBs of NEXRAD files. It could be revealed our model isn't reliable with a higher dataset. However, given more time and more CPU power, the tools and tweaks we applied to creating our convolution network would likely still work with this a higher dataset. Thus, we feel we created a strong starting point for creating a stable tool to identify waterfowl in NEXRAD imagery.
+One of the main limitations of this current model is that it was composed of around 450 datapoints and not a large set. The size limitations were immense, as this was the culmination of working with over 50 GBs of NEXRAD files. It could be revealed our model isn't reliable with a higher dataset. However, given more time and more CPU power, the tools and tweaks we applied to creating our convolution network would likely still work with this a higher dataset. We feel we created a strong starting point for creating a stable tool to identify waterfowl in NEXRAD imagery. However, this also suggests it would be a haste decision to deduce that the Thresholded Neural Network is more viable than the Convolution Neural Network because more data could change this. 
 
-It is possible different methods of preprocessing the NEXRAD imagery into 2D arrays could be used, which would reduce the memory constraits of the dataset and subsequently make it easier to use larger sets data when training the models.
+It is possible different methods of preprocessing the NEXRAD imagery into 2D arrays could be used, which would reduce the memory constraits of the dataset and subsequently make it easier to use larger sets data when training the models. Each NEXRAD image also has many fields, most of which we ommitted due to our memory-constraits. It would be interesting to see in further models whether these could contributes to higher classification accuracy if a way to efficiently convey this data is developed. 
+
+Overall, it was satisfying to create two models that show some ability to accurately predict whether a reading has waterfowl or not. This project was somewhat out of the scope of the processing power and memory we had availible without divesting monetary resources into this assignment. With using external computing power and memory to preprocess the NEXRAD imagery, it would have been easier to create models. Without it, our group had to delegate small sets of data to each member to process and then upload to a Drive. This was highly inefficient and gave way to a higher likelihood of human errer, such as forgetting files and uploading them to the wrong station folders. 
+
 
 ## Conclusion
-Given imagery that is soley composed of waterfowl movement, further models can be developed to analyze their behavior, such as migratory patterns. Thus, a futher discovery would be attempting to create models that would help answer questions about poulty biosecurity. This would turn our model into a form of preprocessy for further machine learning algorithms.
+
+Given imagery that is soley composed of waterfowl movement, further models can be developed to analyze their behavior, such as migratory patterns. A further discovery could be attempting to create models that would help answer questions about poultry biosecurity. This would turn our model into a form of preprocessy for further machine learning algorithms.
 
 
 ## Collaboration
@@ -271,5 +279,5 @@ Given imagery that is soley composed of waterfowl movement, further models can b
     - Main contributor to parser
     - Main contributor of convolution neural network
 
-- ```Johnathan Wesely``` <br />
+- ```Jonathan Wesely``` <br />
     - Main contributor of convolution neural network
