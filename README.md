@@ -248,6 +248,8 @@ Overall, it was satisfying to create two models that show some ability to accura
 
 Given imagery that is soley composed of waterfowl movement, further models can be developed to analyze their behavior, such as migratory patterns. A further discovery could be attempting to create models that would help answer questions about poultry biosecurity. This would turn our model into a form of preprocessy for further machine learning algorithms.
 
+One thought I had that would be interesting is if you could make a function that would automatically try a few different models with a different number of layers, diffferent activation functions, etc, and then output the best one, rather than forcing the user to manually try out different models with different aspects.
+
 ## Collaboration
 
 <div align="center">
