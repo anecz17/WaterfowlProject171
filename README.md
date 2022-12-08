@@ -172,7 +172,7 @@ In total after being parsed into a useable format we have around ```~30GB``` of 
 ### Modeling
 For our models, we use two methods with a 20% test and 80% training split.
 1. Thresholded Neural Network
-The thresholded model is a Keras Sequential model with the following activation layers:
+The thresholded model takes each training case (one whole day), and in each training case it will look at each 2D matrix for the reflection variable (this contains the values for reflection in each pixel for one image) in the day and turn it into a 2D matrix of 1s and 0s depending on if the values are above a certain threshold, then takes the sum of all the points in that 2D matrix, then takes the average of all the sums of every 2D matrix (representing each image) for that day(training case). That is the first variable in the neural network. Repeat this process but instead of looking at the 2D images for the reflection variable instead look at the 2D images for the correlation coeffecient variable. That is the second variable in the neural network. For the neural network itself we used a Keras Sequential model with the following activation layers:
     ```
     thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
     thres_model.add(Dense(units = 9, activation = 'linear'))
@@ -224,7 +224,7 @@ weighted avg       0.87      0.85      0.85        89
 
 We used a 0.5 threshold for the CNN as well:
 ```
-              precision    recall  f1-score   support
+precision    recall  f1-score   support
 
          0.0       0.67      0.94      0.78        17
          1.0       0.97      0.81      0.89        43
@@ -240,15 +240,13 @@ Both created promising results. Currently, the thresholded neutral network had a
 ## Discussion
 Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all correlation coefficient, reflectivety,and velocity values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last final models. This is unfortunate, as it could have allowed more time to create a accurate model.
 
-One of the main limitations of this current model is that it was composed of around 450 datapoints and not a large set. The size limitations were immense, as this was the culmination of working with over 50 GBs of NEXRAD files. It could be revealed our model isn't reliable with a higher dataset. However, given more time and more CPU power, the tools and tweaks we applied to creating our convolution network would likely still work with this a higher dataset. We feel we created a strong starting point for creating a stable tool to identify waterfowl in NEXRAD imagery. However, this also suggests it would be a haste decision to deduce that the Thresholded Neural Network is more viable than the Convolution Neural Network because more data could change this.
-
-The idea behind the convolutional neural net was first to process the image data directly, rather than manually determining heuristics which we believed would have a high correlation with the classification. This allows the model to learn patterns which we potentially would not recognize on our own. The convolutional neural net also is optimized for finding characteristics of images, making it a logical choice for our project. Our first issue was that rather than having a single image for each day, we had a range from 19 to over 30 images per day, for both of Reflectivity and Correlation Coefficient. While we could pass multiple images into a convolutional neural net, the size of the data is a significant issue, so we decided to take the average pixel values over the sets of images to produce a single image for Reflectivity and a single image for Correlation Coefficient. We used Conv2D layers with relu activation as the basis of the model, because this prevents the amount of computation required from growing exponentially with the model's size. We added Dropout layers to reduce overfitting, and Max Pooling layers to select the most important features from previous layers, reducing computational complexity. We tried various amounts of nodes at each layer, and selected values which reduced overfitting. 
-
-The result of 85% accuracy for the CNN was less than expected considering the images are usually very different for contaminated and non-contaminated cases. This is likely due to both the reduction in image size eliminating some features of the images, and the averaging of many images reducing the contrast of the images. To achieve a higher accuracy for this model, we could attempt to use multiple averaged images for each day, so that each represents less total time during the day, which should preserve features better. The drawback of this approach is heavily increased computational complexity, meaning we likely would need to run the model on fewer total days.
+One of the main limitations of this current model is that it was composed of around 450 datapoints and not a large set. The size limitations were immense, as this was the culmination of working with over 50 GBs of NEXRAD files. It could be revealed our model isn't reliable with a higher dataset. However, given more time and more CPU power, the tools and tweaks we applied to creating our convolution network would likely still work with this a higher dataset. We feel we created a strong starting point for creating a stable tool to identify waterfowl in NEXRAD imagery. However, this also suggests it would be a haste decision to deduce that the Thresholded Neural Network is more viable than the Convolution Neural Network because more data could change this. 
 
 It is possible different methods of preprocessing the NEXRAD imagery into 2D arrays could be used, which would reduce the memory constraits of the dataset and subsequently make it easier to use larger sets data when training the models. Each NEXRAD image also has many fields, most of which we ommitted due to our memory-constraits. It would be interesting to see in further models whether these could contributes to higher classification accuracy if a way to efficiently convey this data is developed. 
 
-Overall, it was satisfying to create two models that show some ability to accurately predict whether a reading has waterfowl or not. This project was somewhat out of the scope of the processing power and memory we had availible without divesting monetary resources into this assignment. With using external computing power and memory to preprocess the NEXRAD imagery, it would have been easier to create models. Without it, our group had to delegate small sets of data to each member to process and then upload to a Drive. This was highly inefficient and gave way to a higher likelihood of human errer, such as forgetting files and uploading them to the wrong station folders. 
+Overall, it was satisfying to create two models that show some ability to accurately predict whether a reading has waterfowl or not. This project was somewhat out of the scope of the processing power and memory we had availible without divesting monetary resources into this assignment. With using external computing power and memory to preprocess the NEXRAD imagery, it would have been easier to create models. Without it, our group had to delegate small sets of data to each member to process and then upload to a Drive. This was highly inefficient and gave way to a higher likelihood of human error, such as forgetting files and uploading them to the wrong station folders.
+
+Diving into the descri
 
 
 ## Conclusion
@@ -289,4 +287,5 @@ Given imagery that is soley composed of waterfowl movement, further models can b
     - Main contributor of convolution neural network
 
 - ```Jonathan Wesely``` <br />
-    - Main contributor of convolution neural network
+    - main contributor of data interpretation and ideas for models 
+    - contributor of thresholded neural network
