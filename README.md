@@ -173,15 +173,33 @@ In total after being parsed into a useable format we have around ```~30GB``` of 
 For our models, we use two methods with a 20% test and 80% training split.
 1. Thresholded Neural Network
 The thresholded model is a Keras Sequential model with the following activation layers:
-    ```thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
+    ```
+    thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
     thres_model.add(Dense(units = 9, activation = 'linear'))
     thres_model.add(Dense(units = 7, activation = 'relu'))
-    thres_model.add(Dense(units = 1, activation = 'sigmoid'))```
+    thres_model.add(Dense(units = 1, activation = 'sigmoid'))
+    ```
   
-3. Convolution Neural Network
+2. Convolution Neural Network
+
+```
+conv_model2.add(Conv2D(8,(4,4),activation='relu',input_shape=(180,180,2)))
+conv_model2.add(Conv2D(16,(4,4),activation='relu', padding='same'))
+conv_model2.add(MaxPooling2D((4, 4)))
+conv_model2.add(Conv2D(32, (4,4), activation='relu', padding='same'))
+conv_model2.add(MaxPooling2D((4, 4)))
+conv_model2.add(Conv2D(16, (4,4), activation='relu', padding='same'))
+conv_model2.add(Flatten())
+conv_model2.add(Dense(16, activation='linear'))
+conv_model2.add(Dense(1, activation='sigmoid'))
+
+```
+
 
 ## Results
 1. Thresholded Neural Network
+
+```
 3/3 [==============================] - 0s 4ms/step
               precision    recall  f1-score   support
 
@@ -191,8 +209,23 @@ The thresholded model is a Keras Sequential model with the following activation 
     accuracy                           0.85        89
    macro avg       0.87      0.86      0.85        89
 weighted avg       0.87      0.85      0.85        89
+```
 
-2. Both created promising results, despite being dissimilar approaches.
+
+2.
+```2/2 [==============================] - 1s 92ms/step
+              precision    recall  f1-score   support
+
+         0.0       0.68      0.87      0.76        15
+         1.0       0.90      0.76      0.83        25
+
+    accuracy                           0.80        40
+   macro avg       0.79      0.81      0.80        40
+weighted avg       0.82      0.80      0.80        40
+```
+
+
+Both created promising results, despite being dissimilar approaches. Currently, the thresholded neutral network had a higher precision, 87%, while the CNN had a precision of 82%. 
 
 
 ## Discussion
