@@ -224,7 +224,7 @@ weighted avg       0.87      0.85      0.85        89
 
 We used a 0.5 threshold for the CNN as well:
 ```
-        precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
          0.0       0.67      0.94      0.78        17
          1.0       0.97      0.81      0.89        43
