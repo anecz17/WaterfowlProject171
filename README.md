@@ -205,7 +205,6 @@ conv_model.add(Dense(1, activation='sigmoid'))
 This model used a 0.5 threshold and had the following classification report:
 
 ```python
-3/3 [==============================] - 0s 4ms/step
               precision    recall  f1-score   support
 
          0.0       0.79      0.95      0.87        44
