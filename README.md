@@ -30,6 +30,29 @@ Keywords: *waterfowl*, *machine learning*, *nexrad*, *convolution*
 Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry at over 650 premises in 42 states with a total economic impact of over $2 billion dollars and counting. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. We use various remote sensing datasets by the government (USGS and CDFA), industry (California Poultry Federation and the Pacific Egg and Poultry Association) and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would results in more robust and continuously improving models, thus our reasoning behind the creation of this model.
 
 ## Figures
+We can take a look at some figures to understand our problem a bit more. Firstly, let's take a look at a ```contaminated``` day. Below we are looking at 3 random images taking during the day and we will be exploring two variables. The first variable is ```correlation coefficient``` which represents how round the objects are- preciptation tends to be a lot more round than birds. Lastly, our second variable is ```reflectivity```, which helps us identify where objects are spatially.
+
+##### Contaminated:
+<div align="center">
+![1](https://user-images.githubusercontent.com/84054117/202995723-4ba992d7-ce57-4dab-835d-03bcccff4ee3.png)
+![2](https://user-images.githubusercontent.com/84054117/202995724-fde5109c-6773-4c06-b29f-69efd51e952c.png)
+![3](https://user-images.githubusercontent.com/84054117/202995727-647ade41-302e-4afb-8687-f8b5a218b1d7.png)
+![4](https://user-images.githubusercontent.com/84054117/202995728-5e00da31-0144-4ba5-b921-ec894e355d75.png)
+![5](https://user-images.githubusercontent.com/84054117/202995882-71bd620b-3f4b-4ac8-a7f1-e2eb961adc46.png)
+![6](https://user-images.githubusercontent.com/84054117/202995721-f5e9cf8c-d522-433e-8723-249361e81019.png)
+</div>
+
+##### Uncontaminated:
+<div align="center">
+![7](https://user-images.githubusercontent.com/84054117/203115483-f6d8ec46-403f-4c55-aae1-e3ca20d6c711.png)
+![8](https://user-images.githubusercontent.com/84054117/203115486-7cb3e909-0873-48cc-b72e-1abc59067609.png)
+![10](https://user-images.githubusercontent.com/84054117/203115488-7d7343de-7c4c-46e0-8b3c-105293f47b12.png)
+![9](https://user-images.githubusercontent.com/84054117/203115487-d862714e-26b9-4649-88da-cea4d8b279f6.png)
+![12](https://user-images.githubusercontent.com/84054117/203115481-d2affd1b-d1ba-42c7-a536-237032c5f7bf.png)
+![11](https://user-images.githubusercontent.com/84054117/203115490-11087c64-c042-4cec-8668-38ccf6b0202c.png)
+</div>
+
+first case we are looking at is a "Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
 
 ## Methods
 
@@ -124,20 +147,29 @@ Our function ```extract_nexrad_level2_data()``` takes an NEXRAD archive file fro
 out the neccessary dataset for trainging our model. As stated above, these data values we used are ```correlation coefficient```, ```reflectivity```, and ```velocity```.
 
 After this function is ran, it outputs a ```.txt``` file which can then be used as data in our model.
-An example output is as follows ```R = reflectivity, C = correlation coefficient, Z = velocity```:
+An example output (very shortened down, average size of data is ```~15,000kb``` per day) is as follows ```R = reflectivity, C = correlation coefficient, Z = velocity```:
 
 ```
 R
 -13.75,-8.270833333333334,-16.104166666666668,-10.333333333333334,-4.520833333333333,4.583333333333333,4.5,0.22916666666666666,-1.8125,-2.1458333333333335,-1.0208333333333333,-0.4791666666666667,0.0,0.0,-1.3333333333333333,0.0,-0.6041666666666666,0.0,0.0,0.0,-0.5208333333333334,-2.2083333333333335,-0.9791666666666666,-2.9375,-1.8125,0.0,-0.75,-0.625,-2.625,-1.0208333333333333,2.3333333333333335,-1.625,-0.6041666666666666,-0.22916666666666666,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0, -9.875,-6.395833333333333,-18.395833333333332,-13.270833333333334,-8.479166666666666,-4.291666666666667,-4.791666666666667,-0.3541666666666667,1.2916666666666667,0.25,-2.3958333333333335,-3.4583333333333335,-1.2708333333333333,0.0,-0.2708333333333333,-0.2916666666666667,0.0,0.0,0.0,0.0,0.0,-0.6458333333333334,0.0,0.0,-0.4583333333333333
 C
-0.38927083333333334,0.6102083333333334,0.3027083333333333,0.47802083333333334,0.7769791666666666,0.2710416666666666,0.5951041666666668,0.845625,0.7548958333333333,0.6781250000000002,0.5610416666666668,0.1415625,0.10708333333333334,0.33416666666666667,0.08020833333333333,0.28385416666666663,0.1823958333333333,0.1515625,0.0,0.0,0.0,0.16260416666666666,0.0,0.0,0.0196875,0.0,0.0,0.0,0.0,0.0,0.0,0.23083333333333336,0.11354166666666668,0.06572916666666667,0.16864583333333333,0.35500000000000004,0.1890625,0.10854166666666668,0.0,0.0,0.15031250000000002,0.17635416666666665,0.4995833333333333,0.27822916666666664,0.4273958333333333,0.6521874999999998,0.5916666666666666,0.3665625,0.0,0.15135416666666665,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+0.38927083333333334,0.6102083333333334,0.3027083333333333,0.47802083333333334,0.7769791666666666,0.2710416666666666,0.5951041666666668,0.845625,0.7548958333333333,0.6781250000000002,0.5610416666666668,0.1415625,0.10708333333333334,0.33416666666666667,0.08020833333333333,0.28385416666666663,0.1823958333333333,0.1515625,0.0,0.0,0.0,0.16260416666666666,0.0,0.0,0.0196875,0.0,0.0,0.0,0.0,0.0,0.0,0.23083333333333336,0.11354166666666668,0.06572916666666667,0.16864583333333333,0.35500000000000004,0.1890625,0.10854166666666668,0.0,0.0,0.15031250000000002,0.17635416666666665,0.4995833333333333,0.27822916666666664,0.4273958333333333,0.6521874999999998,0.5916666666666666,0.3665625,0.0,0.15135416666666665,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 0.4242708333333333,0.50625,0.42104166666666665,0.7726041666666668,0.7657291666666666,0.49125,0.6349999999999999,0.20322916666666668,0.49166666666666664,0.3463541666666667,0.33458333333333334,0.4170833333333333,0.4741666666666667,0.4675,0.0,0.1575,0.2778125,0.0903125,0.10604166666666667,0.0,0.0,0.0,0.12333333333333332,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.12375,0.0,0.0,0.0,0.0,0.0,0.12666666666666668,
 Z
 -0.53125,0.9921875,-0.22265625,-1.65625,1.2265625,1.58984375,-1.11328125,0.171875,-1.44921875,0.921875,-3.33984375,-0.3359375,0.02734375,-0.14453125,-1.0078125,-2.03125,-1.9921875,1.3671875,0.0,0.0,0.0,-0.8515625,0.0,0.0,0.01171875,0.0,0.0,0.0,0.0,0.0,0.0,0.46875,0.56640625,-0.42578125,0.92578125,2.20703125,-0.15234375,0.0859375,0.0,0.0,0.625,0.4296875,0.72265625,0.265625,0.63671875,2.00390625,-2.453125,-1.640625,0.0,1.234375,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 ```
 
+In total after being parsed into a useable format we have around ```~30GB``` of data we can use to train our model. Atlast the final step in our preprocessing is getting the data values from these text files into a data structure that can be used within our model. 
+
+```python
+
+```
 
 ### Modeling
+
+For our model, we use two different methods:
+1. Threshold
+2. Convolution
 
 ## Results
 
