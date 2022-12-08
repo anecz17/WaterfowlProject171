@@ -165,27 +165,25 @@ Z
 
 In total after being parsed into a useable format we have around ```~30GB``` of data we can use to train our model. Atlast the final step in our preprocessing is getting the data values from these text files into a data structure that can be used within our model. 
 
-```python
-
-```
-
 ### Modeling
 For our models, we use two methods with a 20% test and 80% training split.
 1. Thresholded Neural Network
 
 The thresholded model takes each training case (one whole day), and in each training case it will look at each 2D matrix for the reflection variable (this contains the values for reflection in each pixel for one image) in the day and turn it into a 2D matrix of 1s and 0s depending on if the values are above a certain threshold, then takes the sum of all the points in that 2D matrix, then takes the average of all the sums of every 2D matrix (representing each image) for that day(training case). That is the first variable in the neural network. Do this process for "n" different threshold values and that will give you n variables. Repeat this process but instead of looking at the 2D images for the reflection variable instead look at the 2D images for the correlation coeffecient variable. That will give you "n" more variables in the neural network. So the total number of variables that will be fed into the neural network will be "2n" where n is the number of threshold values. 
 For the neural network itself we used a Keras Sequential model with the following activation layers:
-    ```
-    thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
-    thres_model.add(Dense(units = 9, activation = 'linear'))
-    thres_model.add(Dense(units = 7, activation = 'relu'))
-    thres_model.add(Dense(units = 1, activation = 'sigmoid'))
-    ```
+
+```python
+thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
+thres_model.add(Dense(units = 9, activation = 'linear'))
+thres_model.add(Dense(units = 7, activation = 'relu'))
+thres_model.add(Dense(units = 1, activation = 'sigmoid'))
+```
   
 2. Convolution Neural Network
 
 The CNN was also a Keras Sequential, but includes 2D Convolutional layers, Max Pooling layers, and Dropout layers. It takes a 180x180x2 array as an input for each observation, which represents a 2D image with two float elements for each location. The first represents Reflectivity and the second represents Correlation Coefficient.
-```
+
+```python
 conv_model = Sequential()
 conv_model.add(Conv2D(8,(4,4),activation='relu',input_shape=(180,180,2)))
 conv_model.add(Conv2D(16,(4,4),activation='relu', padding='same'))
@@ -199,16 +197,14 @@ conv_model.add(MaxPooling2D((4, 4)))
 conv_model.add(Flatten())
 conv_model.add(Dense(16, activation='linear'))
 conv_model.add(Dense(1, activation='sigmoid'))
-
 ```
-
 
 ## Results
 1. Thresholded Neural Network
 
 This model used a 0.5 threshold and had the following classification report:
 
-```
+```python
 3/3 [==============================] - 0s 4ms/step
               precision    recall  f1-score   support
 
@@ -223,9 +219,8 @@ weighted avg       0.87      0.85      0.85        89
 
 2. Convolution Neural Network
 
-
 We used a 0.5 threshold for the CNN as well:
-```
+```python
               precision    recall  f1-score   support
 
          0.0       0.67      0.94      0.78        17
@@ -234,10 +229,8 @@ We used a 0.5 threshold for the CNN as well:
     accuracy                           0.85        60
    macro avg       0.82      0.88      0.83        60
 weighted avg       0.89      0.85      0.86        60
-
 ```
 Both created promising results. Currently, the thresholded neutral network had a higher precision, 87%, while the CNN had a precision of 82%. Full details of these executions are present in the _Preprocessing & Model Building_ Jupyter Notebook.
-
 
 ## Discussion
 Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all correlation coefficient, reflectivety,and velocity values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last final models. This is unfortunate, as it could have allowed more time to create a accurate model.
@@ -254,11 +247,9 @@ It is possible different methods of preprocessing the NEXRAD imagery into 2D arr
 
 Overall, it was satisfying to create two models that show some ability to accurately predict whether a reading has waterfowl or not. This project was somewhat out of the scope of the processing power and memory we had availible without divesting monetary resources into this assignment. With using external computing power and memory to preprocess the NEXRAD imagery, it would have been easier to create models. Without it, our group had to delegate small sets of data to each member to process and then upload to a Drive. This was highly inefficient and gave way to a higher likelihood of human errer, such as forgetting files and uploading them to the wrong station folders. 
 
-
 ## Conclusion
 
 Given imagery that is soley composed of waterfowl movement, further models can be developed to analyze their behavior, such as migratory patterns. A further discovery could be attempting to create models that would help answer questions about poultry biosecurity. This would turn our model into a form of preprocessy for further machine learning algorithms.
-
 
 ## Collaboration
 
@@ -271,27 +262,27 @@ Given imagery that is soley composed of waterfowl movement, further models can b
 </div>
 
 - ```Andras Necz``` <br />
-    - Team leader
-    - Organized meeting with Agrinerds
-    - Worked on most scripts
+    - Team leader.
+    - Organized meeting with Agrinerds.
+    - Worked on most scripts.
 
 - ```Daria Buka``` <br />
-    - Preprocessed contamination .xlsx sheets
-    - Trained first model
-    - Main contributor of writeup
+    - Preprocessed contamination .xlsx sheets.
+    - Trained first model.
+    - Main contributor of writeup.
 
 - ```Mitchell Davis``` <br />
-    - Main contributor to parser
-    - Parsed majority of data
+    - Main contributor to parser.
+    - Parsed majority of data.
 
 - ```Colton Perazzo``` <br />
-    - Main contributor of writeup
-    - Parsed data
+    - Main contributor of writeup.
+    - Parsed data.
 
 - ```Zachary Oren``` <br />
-    - Main contributor to parser
-    - Main contributor of convolution neural network
+    - Main contributor to parser.
+    - Main contributor of convolution neural network.
 
 - ```Jonathan Wesely``` <br />
-    - Main contributor of data interpretation and ideas for models
-    - Contributor of thresholded neural network
+    - Main contributor of data interpretation and ideas for models.
+    - Contributor of thresholded neural network.
