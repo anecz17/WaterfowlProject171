@@ -27,7 +27,7 @@ Keywords: *waterfowl*, *machine learning*, *nexrad*, *convolution*
 </div>
 
 ## Introduction
-Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry at over 650 premises in 42 states with a total economic impact of over $2 billion dollars and counting. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. We use various remote sensing datasets by the government (USGS and CDFA), industry (California Poultry Federation and the Pacific Egg and Poultry Association) and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would results in more robust and continuously improving models, thus our reasoning behind the creation of this model.
+Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America (2014-15 and 2022-current) have led to the depopulation of over 90 million commercial and backyard poultry with a total economic impact of over $2 billion dollars. These outbreaks and other similar ones around the world demonstrate the effects that Avian Influenza viruses (AIv) can have on domestic commercial poultry. Since waterfowl are the primary reservoir of AIv’s, understanding waterfowl distribution and movements relative to the location of poultry is an essential component of poultry biosecurity. The ability to identify waterfowl presence/absence and density in close proximity to the over 44,000 commercial poultry operations in the U.S. would offer farmers and state and federal stakeholders the ability to triage biosecurity and surveillance efforts. Organizations like Agrinerds use various sensing datasets by the government (USGS and CDFA), industry and from the national weather surveillance radar network (NEXRAD) to quantify and model waterfowl roosting density and distribution. The current approach- detection of waterfowl manually - has the potential to create a new layer/method of surveillance for the U.S. poultry industry. One significant challenge is the manual screening of historic NEXRAD radar imagery that is used to develop regional machine learning predictive models of waterfowl distributions. This approach is time consuming and poorly scalable. The ability to automate the radar screening would result in more robust and continuously improving models and vastly help address the issue of poulty biosecurity. **Through various models, we have attempted to automatate classifying waterfowl in NEXRAD radar imagary.**
 
 ## Figures
 We can take a look at some figures to understand our problem a bit more. Firstly, let's take a look at a ```contaminated``` day. Below we are looking at 3 random images taking during the day and we will be exploring two variables. The first variable is ```correlation coefficient``` which represents how round the objects are- preciptation tends to be a lot more round than birds. Lastly, our second variable is ```reflectivity```, which helps us identify where objects are spatially.
@@ -172,14 +172,21 @@ In total after being parsed into a useable format we have around ```~30GB``` of 
 ### Modeling
 
 For our model, we use two different methods:
-1. Threshold
-2. Convolution
+1. Threshold (change I think?)
+2. Convolution Neural Network
 
 ## Results
-
+Both created promising results, despite being dissimilar approaches. 
 ## Discussion
+Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all reflectivety and [...] values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last few final models.
+
+One of the main limitations of this current model is that it was composed of around 450 datapoints and not a large set. The size limitations were immense, as this was the culmination of working with over 50 GBs of NEXRAD files. It could be revealed our model isn't reliable with a higher dataset. However, given more time and more CPU power, the tools and tweaks we applied to creating our convolution network would likely still work with this a higher dataset. Thus, we feel we created a strong starting point for creating a stable tool to identify waterfowl in NEXRAD imagery.
+
+It is possible different methods of preprocessing the NEXRAD imagery into 2D arrays could be used, which would reduce the memory constraits of the dataset and subsequently make it easier to use larger sets data when training the models.
 
 ## Conclusion
+Given imagery that is soley composed of waterfowl movement, further models can be developed to analyze their behavior, such as migratory patterns. Thus, a futher discovery would be attempting to create models that would help answer questions about poulty biosecurity. This would turn our model into a form of preprocessy for further machine learning algorithms.
+
 
 ## Collaboration
 
@@ -192,19 +199,26 @@ For our model, we use two different methods:
 </div>
 
 - ```Andras Necz``` <br />
-    - Team leader and contributed to the organization of the project idea and overall project.
+    - Team leader
+    - Organized meeting with Agrinerds
+    - Worked on most scripts
 
 - ```Daria Buka``` <br />
-    - test
+    - Preprocessed contamination .xlsx sheets
+    - Trained first model
+    - Main contributor of writeup
 
 - ```Mitchell Davis``` <br />
-    - test
+    - Main contributor to parser
+    - Parsed majority of data
 
 - ```Colton Perazzo``` <br />
-    - test
+    - Main contributor of writeup
+    - Parsed data
 
 - ```Zachary Oren``` <br />
-    - test
+    - Main contributor to parser
+    - Main contributor of convolution neural network
 
 - ```Johnathan Wesely``` <br />
-    - test
+    - Main contributor of convolution neural network
