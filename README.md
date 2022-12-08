@@ -33,24 +33,20 @@ Two major outbreaks of Highly Pathogenic Avian Influenza (HPAI) in North America
 We can take a look at some figures to understand our problem a bit more. Firstly, let's take a look at a ```contaminated``` day. Below we are looking at 3 random images taking during the day and we will be exploring two variables. The first variable is ```correlation coefficient``` which represents how round the objects are- preciptation tends to be a lot more round than birds. Lastly, our second variable is ```reflectivity```, which helps us identify where objects are spatially.
 
 ##### Contaminated:
-<div align="center">
 ![1](https://user-images.githubusercontent.com/84054117/202995723-4ba992d7-ce57-4dab-835d-03bcccff4ee3.png)
 ![2](https://user-images.githubusercontent.com/84054117/202995724-fde5109c-6773-4c06-b29f-69efd51e952c.png)
 ![3](https://user-images.githubusercontent.com/84054117/202995727-647ade41-302e-4afb-8687-f8b5a218b1d7.png)
 ![4](https://user-images.githubusercontent.com/84054117/202995728-5e00da31-0144-4ba5-b921-ec894e355d75.png)
 ![5](https://user-images.githubusercontent.com/84054117/202995882-71bd620b-3f4b-4ac8-a7f1-e2eb961adc46.png)
 ![6](https://user-images.githubusercontent.com/84054117/202995721-f5e9cf8c-d522-433e-8723-249361e81019.png)
-</div>
 
 ##### Uncontaminated:
-<div align="center">
 ![7](https://user-images.githubusercontent.com/84054117/203115483-f6d8ec46-403f-4c55-aae1-e3ca20d6c711.png)
 ![8](https://user-images.githubusercontent.com/84054117/203115486-7cb3e909-0873-48cc-b72e-1abc59067609.png)
 ![10](https://user-images.githubusercontent.com/84054117/203115488-7d7343de-7c4c-46e0-8b3c-105293f47b12.png)
 ![9](https://user-images.githubusercontent.com/84054117/203115487-d862714e-26b9-4649-88da-cea4d8b279f6.png)
 ![12](https://user-images.githubusercontent.com/84054117/203115481-d2affd1b-d1ba-42c7-a536-237032c5f7bf.png)
 ![11](https://user-images.githubusercontent.com/84054117/203115490-11087c64-c042-4cec-8668-38ccf6b0202c.png)
-</div>
 
 first case we are looking at is a "Contaminated" day. We are looking at 3 random images during the day, and we are going to look at two variables. The first is "correlation coefficient" which tells us how round the objects are, precipitation tends to be a lot more round than birds. The second variable is "reflectivity", which helps us identify where objects are spatially.
 
