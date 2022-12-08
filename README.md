@@ -182,17 +182,21 @@ The thresholded model is a Keras Sequential model with the following activation 
   
 2. Convolution Neural Network
 
-The CNN was also a Keras Sequential, but includes a 4x4 2D Convolutional layer. Various complexities of models and types of activation functions were attempted, but this created the most notable result:
+The CNN was also a Keras Sequential, but includes 2D Convolutional layers, Max Pooling layers, and Dropout layers. It takes a 180x180x2 array as an input for each observation, which represents a 2D image with two float elements for each location. The first represents Reflectivity and the second represents Correlation Coefficient.
 ```
-conv_model2.add(Conv2D(8,(4,4),activation='relu',input_shape=(180,180,2)))
-conv_model2.add(Conv2D(16,(4,4),activation='relu', padding='same'))
-conv_model2.add(MaxPooling2D((4, 4)))
-conv_model2.add(Conv2D(32, (4,4), activation='relu', padding='same'))
-conv_model2.add(MaxPooling2D((4, 4)))
-conv_model2.add(Conv2D(16, (4,4), activation='relu', padding='same'))
-conv_model2.add(Flatten())
-conv_model2.add(Dense(16, activation='linear'))
-conv_model2.add(Dense(1, activation='sigmoid'))
+conv_model = Sequential()
+conv_model.add(Conv2D(8,(4,4),activation='relu',input_shape=(180,180,2)))
+conv_model.add(Conv2D(16,(4,4),activation='relu', padding='same'))
+conv_model.add(MaxPooling2D((4, 4)))
+conv_model.add(Dropout(.3))
+conv_model.add(Conv2D(32, (4,4), activation='relu', padding='same'))
+conv_model.add(MaxPooling2D((4, 4)))
+conv_model.add(Dropout(.3))
+conv_model.add(Conv2D(16, (4,4), activation='relu', padding='same'))
+conv_model.add(MaxPooling2D((4, 4)))
+conv_model.add(Flatten())
+conv_model.add(Dense(16, activation='linear'))
+conv_model.add(Dense(1, activation='sigmoid'))
 
 ```
 
