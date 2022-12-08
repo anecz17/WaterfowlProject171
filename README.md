@@ -170,13 +170,31 @@ In total after being parsed into a useable format we have around ```~30GB``` of 
 ```
 
 ### Modeling
-
-For our model, we use two different methods:
-1. Threshold (change I think?)
-2. Convolution Neural Network
+For our models, we use two methods with a 20% test and 80% training split.
+1. Thresholded Neural Network
+The thresholded model is a Keras Sequential model with the following activation layers:
+    ```thres_model.add(Dense(units = 4, activation = 'tanh', input_dim = X_train.shape[1]))
+    thres_model.add(Dense(units = 9, activation = 'linear'))
+    thres_model.add(Dense(units = 7, activation = 'relu'))
+    thres_model.add(Dense(units = 1, activation = 'sigmoid'))```
+  
+3. Convolution Neural Network
 
 ## Results
-Both created promising results, despite being dissimilar approaches. 
+1. Thresholded Neural Network
+3/3 [==============================] - 0s 4ms/step
+              precision    recall  f1-score   support
+
+         0.0       0.79      0.95      0.87        44
+         1.0       0.94      0.76      0.84        45
+
+    accuracy                           0.85        89
+   macro avg       0.87      0.86      0.85        89
+weighted avg       0.87      0.85      0.85        89
+
+2. Both created promising results, despite being dissimilar approaches.
+
+
 ## Discussion
 Our model hit many roadblocks during the process we termed "parsing", where we took NEXRAD data and created text files listing all reflectivety and [...] values. Midway through working on our machine learning models, we noticed strange behavior and formatting of certain files, that resulted in the model being more inaccurate than it was. Finetuning our parser was a relavent issue even up until our last few final models.
 
